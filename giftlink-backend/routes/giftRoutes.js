@@ -1,42 +1,52 @@
 const express = require('express');
 const router = express.Router();
-const { ObjectId } = require('mongodb');
-const connectToDatabase = require('../models/db'); // Adjust the path as necessary
+const connectToDatabase = require('../models/db');
+const logger = require('../logger');
 
-// GET /api/gifts
-router.get('/api/gifts', async (req, res) => {
+// Get all gifts
+router.get('/', async (req, res, next) => {
+    logger.info('/ called');
     try {
         const db = await connectToDatabase();
-        const collection = db.collection('gifts');
+
+        const collection = db.collection("gifts");
         const gifts = await collection.find({}).toArray();
         res.json(gifts);
-    } catch (error) {
-        console.error("Error retrieving gifts:", error);
-        res.status(500).json({ error: "Failed to retrieve gifts" });
+    } catch (e) {
+        logger.console.error('oops something went wrong', e)
+        next(e);
     }
 });
 
-// GET /api/gifts/:id
-router.get('/api/gifts/:id', async (req, res) => {
+// Get a single gift by ID
+router.get('/:id', async (req, res, next) => {
     try {
-        // Task 1: Connect to MongoDB and store connection to db constant
         const db = await connectToDatabase();
-
-        // Task 2: Use the collection() method to retrieve the gift collection
-        const collection = db.collection('gifts');
-
-        // Task 3: Find a specific gift by ID
+        const collection = db.collection("gifts");
         const id = req.params.id;
-        const gift = await collection.findOne({ _id: new ObjectId(id) });
+        const gift = await collection.findOne({ id: id });
 
-        if (gift) {
-            res.json(gift);
-        } else {
-            res.status(404).json({ error: "Gift not found" });
+        if (!gift) {
+            return res.status(404).send("Gift not found");
         }
-    } catch (error) {
-        console.error("Error retrieving gift:", error);
-        res.status(500).json({ error: "Failed to retrieve gift" });
+
+        res.json(gift);
+    } catch (e) {
+        next(e);
+    }
+});
+
+
+// Add a new gift
+router.post('/', async (req, res, next) => {
+    try {
+        const db = await connectToDatabase();
+        const collection = db.collection("gifts");
+        const gift = await collection.insertOne(req.body);
+
+        res.status(201).json(gift.ops[0]);
+    } catch (e) {
+        next(e);
     }
 });
 

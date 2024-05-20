@@ -1,35 +1,56 @@
+require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
+const pinoLogger = require('./logger');
+
+const connectToDatabase = require('./models/db');
+const {loadData} = require("./util/import-mongo/index");
+
+
 const app = express();
+app.use("*",cors());
+const port = 3060;
 
-// Import other necessary middleware and routes
-// Example: const bodyParser = require('body-parser');
+// Connect to MongoDB; we just do this one time
+connectToDatabase().then(() => {
+    pinoLogger.info('Connected to DB');
+})
+    .catch((e) => console.error('Failed to connect to DB', e));
 
-// Task 1: Import giftRoutes and store in a constant called giftRoutes
+
+app.use(express.json());
+
+// Route files
+// Gift API Task 1: import the giftRoutes and store in a constant called giftroutes
 const giftRoutes = require('./routes/giftRoutes');
 
-// Middleware setup (e.g., body-parser)
-// app.use(bodyParser.json()); // Uncomment if body-parser is needed
+// Search API Task 1: import the searchRoutes and store in a constant called searchRoutes
+//{{insert code here}}
 
-// Task 2: Add the giftRoutes to the server by using the app.use() method
+
+const pinoHttp = require('pino-http');
+const logger = require('./logger');
+
+app.use(pinoHttp({ logger }));
+
+// Use Routes
+// Gift API Task 2: add the giftRoutes to the server by using the app.use() method.
 app.use('/api/gifts', giftRoutes);
 
-// Other routes and middleware
-// Example: app.use('/api/anotherRoute', anotherRoute);
+// Search API Task 2: add the searchRoutes to the server by using the app.use() method.
+//{{insert code here}}
 
-// Default route or error handling (optional)
-app.get('/', (req, res) => {
-    res.send('Welcome to the Gift API');
-});
 
-// Error handling middleware (optional)
+// Global Error Handler
 app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something broke!');
+    console.error(err);
+    res.status(500).send('Internal Server Error');
 });
 
-const port = process.env.PORT || 3000;
+app.get("/",(req,res)=>{
+    res.send("Inside the server")
+})
+
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server running on port ${port}`);
 });
-
-module.exports = app;
