@@ -1,50 +1,36 @@
 const express = require('express');
 const router = express.Router();
 const connectToDatabase = require('../models/db');
-const logger = require('../logger');
 
-// Get all gifts
+// Search for gifts
 router.get('/', async (req, res, next) => {
-    logger.info('/ called');
     try {
-        const db = await connectToDatabase();
 
-        const collection = db.collection("gifts");
-        const gifts = await collection.find({}).toArray();
-        res.json(gifts);
-    } catch (e) {
-        logger.console.error('oops something went wrong', e)
-        next(e);
-    }
-});
-
-// Get a single gift by ID
-router.get('/:id', async (req, res, next) => {
-    try {
+        // Task 1: Connect to MongoDB
         const db = await connectToDatabase();
         const collection = db.collection("gifts");
-        const id = req.params.id;
-        const gift = await collection.findOne({ id: id });
+        // Initialize the query object
+        let query = {};
 
-        if (!gift) {
-            return res.status(404).send("Gift not found");
+        // Task 2: check if the name exists and is not empty
+        if (req.query.name && req.query.name.trim() !== '') {
+            query.name = { $regex: req.query.name, $options: "i" }; // Using regex for partial match, case-insensitive
         }
 
-        res.json(gift);
-    } catch (e) {
-        next(e);
-    }
-});
+        // Task 3: Add other filters to the query
+        if (req.query.category) {
+            query.category = req.query.category;
+        }
+        if (req.query.condition) {
+            query.condition = req.query.condition;
+        }
+        if (req.query.age_years) {
+            query.age_years = { $lte: parseInt(req.query.age_years) };
+        }
 
-
-// Add a new gift
-router.post('/', async (req, res, next) => {
-    try {
-        const db = await connectToDatabase();
-        const collection = db.collection("gifts");
-        const gift = await collection.insertOne(req.body);
-
-        res.status(201).json(gift.ops[0]);
+        // Task 4: Fetch filtered gifts
+        const gifts = await collection.find(query).toArray();
+        res.json(gifts);
     } catch (e) {
         next(e);
     }
