@@ -29,7 +29,7 @@ export default function Navbar() {
         navigate(`/app`);
 
     }
-    const profileSecton=()=>{
+    const profileSection=()=>{
       navigate(`/app/profile`);
     }
     return (
