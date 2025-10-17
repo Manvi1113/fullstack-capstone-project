@@ -53,7 +53,7 @@
                                     )}
                                 </div>
                                 <div className="card-body">
-                                    <h5 className="card-title">{gift.name}</h5>
+                                    
                                     <p className={`card-text ${getConditionClass(gift.condition)}`}>
                                         {gift.condition}
                                     </p>
