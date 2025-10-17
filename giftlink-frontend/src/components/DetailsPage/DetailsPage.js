@@ -80,7 +80,7 @@ function DetailsPage() {
             <button className="btn btn-secondary mb-3" onClick={handleBackClick}>Back</button>
             <div className="card product-details-card">
                 <div className="card-header text-white">
-                    <h2 className="details-title">{gift.name}</h2>
+                   
                 </div>
                 <div className="card-body">
                     <div className="image-placeholder-large">
