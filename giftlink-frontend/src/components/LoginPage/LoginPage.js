@@ -33,7 +33,7 @@ function LoginPage() {
             method: 'POST',
             //Step 1 - Task 8
           headers: {
-            'content-type': 'application/json',
+          
             'Authorization': bearerToken ? `Bearer ${bearerToken}` : '', // Include Bearer token if available
           },
         //Step 1 - Task 9
