@@ -86,16 +86,7 @@ function SearchPage() {
                             </select>
 
                             {/* Age Range Slider */}
-                            <label htmlFor="ageRange">Less than {ageRange} years</label>
-                            <input
-                                type="range"
-                                className="form-control-range"
-                                id="ageRange"
-                                min="1"
-                                max="10"
-                                value={ageRange}
-                                onChange={e => setAgeRange(e.target.value)}
-                            />
+                            
                         </div>
                     </div>
 
