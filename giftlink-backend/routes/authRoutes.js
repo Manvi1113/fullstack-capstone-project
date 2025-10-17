@@ -20,7 +20,7 @@ router.post('/register', async (req, res) => {
       //Connect to `giftsdb` in MongoDB through `connectToDatabase` in `db.js`.
       const db = await connectToDatabase();
       const collection = db.collection("users");
-      const existingEmail = await collection.findOne({ email: req.body.email });
+      const existingEmail = await collection.find({ email: req.body.email });
 
         if (existingEmail) {
             logger.error('Email id already exists');
