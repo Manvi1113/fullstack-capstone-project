@@ -116,7 +116,7 @@ router.put('/update', async (req, res) => {
         const collection = db.collection("users");
 
         //Task 5: Find user credentials
-        const existingUser = await collection.findOne({ email });
+       
 
         if (!existingUser) {
             logger.error('User not found');
