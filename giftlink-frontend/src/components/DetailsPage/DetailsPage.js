@@ -95,17 +95,7 @@ function DetailsPage() {
                     <p><strong>Category:</strong> 
                         {gift.category}
                     </p>
-                    <p><strong>Condition:</strong> 
-                        {gift.condition}
-                    </p>
-                    <p><strong>Date Added:</strong> 
-                        {gift.dateAdded}
-                    </p>
-                    <p><strong>Age (Years):</strong> 
-                        {gift.age}
-                    </p>
-                    <p><strong>Description:</strong> 
-                        {gift.description}
+                   
                     </p>
                 </div>
             </div>
