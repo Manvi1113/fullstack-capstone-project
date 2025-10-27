@@ -6,9 +6,7 @@ import {urlConfig} from '../../config';
 function SearchPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const [ageRange, setAgeRange] = useState(6); // Initialize with minimum value
-    const [searchResults, setSearchResults] = useState([]);
-    const categories = ['Living', 'Bedroom', 'Bathroom', 'Kitchen', 'Office'];
-    const conditions = ['New', 'Like New', 'Older'];
+    
 
     useEffect(() => {
         // fetch all products
@@ -37,8 +35,7 @@ function SearchPage() {
         const baseUrl = `${urlConfig.backendUrl}/api/search?`;
         const queryParams = new URLSearchParams({
             name: searchQuery,
-            age_years: ageRange,
-            category: document.getElementById('categorySelect').value,
+            age_years: ageRange
             condition: document.getElementById('conditionSelect').value,
         }).toString();
 
