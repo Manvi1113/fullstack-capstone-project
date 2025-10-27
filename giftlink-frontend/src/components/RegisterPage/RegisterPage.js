@@ -14,7 +14,7 @@ function RegisterPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    
 
     //Step 1 - Task 4
      const [showerr, setShowerr] = useState('');
@@ -36,7 +36,7 @@ function RegisterPage() {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-                password: password
+            
             })
         });
 
