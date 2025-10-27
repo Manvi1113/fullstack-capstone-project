@@ -10,8 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 
 router.post('/register', async (req, res) => {
-    try {
-        const db = await connectToDatabase();
+       
         const collection = db.collection('users');
         const salt = await bcryptjs.genSalt(10);
         const hash = await bcryptjs.hash(req.body.password, salt);
@@ -39,7 +38,7 @@ router.post('/login', async (req, res) => {
         const db = await connectToDatabase();
         const collection = db.collection('users');
 
-        const theUser = await collection.findOne({ email: req.body.email });
+       
         if (theUser) {
             const result = await bcryptjs.compare(req.body.password, theUser.password);
             if (!result) {
@@ -70,7 +69,6 @@ router.put('/update', async (req, res) => {
         const db = await connectToDatabase();
         const collection = db.collection('users');
 
-        const existingUser = await collection.findOne({ email });
         if (!existingUser) {
             return res.status(404).json({ error: 'User not found' });
         }
@@ -78,8 +76,7 @@ router.put('/update', async (req, res) => {
         existingUser.firstName = req.body.name;
         existingUser.updatedAt = new Date();
 
-        await collection.findOneAndUpdate({ email }, { $set: existingUser });
-
+        
         const payload = { user: { id: existingUser._id.toString() } };
         const authtoken = jwt.sign(payload, JWT_SECRET);
 
