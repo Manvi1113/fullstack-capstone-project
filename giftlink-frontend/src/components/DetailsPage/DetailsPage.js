@@ -104,9 +104,7 @@ function DetailsPage() {
                     <p><strong>Age (Years):</strong> 
                         {gift.age}
                     </p>
-                    <p><strong>Description:</strong> 
-                        {gift.description}
-                    </p>
+                    
                 </div>
             </div>
             <div className="comments-section mt-4">
