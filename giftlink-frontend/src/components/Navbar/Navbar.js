@@ -4,31 +4,9 @@ import {urlConfig} from '../../config';
 import { useApp } from '../../context';
 
 export default function Navbar() {
-    const { isLoggedIn, setIsLoggedIn, userName } = useAppContext();
+    const { setIsLoggedIn, userName } = useAppContext();
 
-  const navigate=useNavigate();
-    useEffect(() => {
-        const authTokenFromSession = sessionStorage.getItem('auth-token');
-        const nameFromSession = sessionStorage.getItem('name');
-        if (authTokenFromSession) {
-            if(isLoggedIn && nameFromSession) {
-              setUserName(nameFromSession);
-            } else {
-              sessionStorage.removeItem('auth-token');
-              sessionStorage.removeItem('name');
-              sessionStorage.removeItem('email');
-              setIsLoggedIn(false);
-            }
-        }
-    },[isLoggedIn, setIsLoggedIn, setUserName])
-    const handleLogout=()=>{
-        sessionStorage.removeItem('auth-token');
-        sessionStorage.removeItem('name');
-        sessionStorage.removeItem('email');
-        setIsLoggedIn(false);
-        navigate(`/app`);
-
-    }
+ 
     const profileSection=()=>{
       navigate(`/app/profile`);
     }
