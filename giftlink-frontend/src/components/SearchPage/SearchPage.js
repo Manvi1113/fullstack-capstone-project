@@ -67,36 +67,7 @@ function SearchPage() {
                     <div className="filter-section mb-3 p-3 border rounded">
                         <h5>Filters</h5>
                         <div className="d-flex flex-column">
-                            {/* Category Dropdown */}
-                            <label htmlFor="categorySelect">Category</label>
-                            <select id="categorySelect" className="form-control my-1">
-                                <option value="">All</option>
-                                {categories.map(category => (
-                                    <option key={category} value={category}>{category}</option>
-                                ))}
-                            </select>
-
-                            {/* Condition Dropdown */}
-                            <label htmlFor="conditionSelect">Condition</label>
-                            <select id="conditionSelect" className="form-control my-1">
-                                <option value="">All</option>
-                                {conditions.map(condition => (
-                                    <option key={condition} value={condition}>{condition}</option>
-                                ))}
-                            </select>
-
-                            {/* Age Range Slider */}
-                            
-                        </div>
-                    </div>
-
-                    <input
-                        type="text"
-                        className="form-control mb-2"
-                        placeholder="Search for items..."
-                        value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
-                    />
+                         
                     <button className="btn btn-primary" onClick={handleSearch}>Search</button>
                     <div className="search-results mt-4">
                         {searchResults.length > 0 ? (
