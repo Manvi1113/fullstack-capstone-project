@@ -3,7 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const logger = require('./logger');
 const expressPino = require('express-pino-logger')({ logger });
-const natural = (natural);
+natural
 
 
 const app = express();
