@@ -26,10 +26,10 @@ function RegisterPage() {
     const handleRegister = async () => {
         const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
             //Step 1 - Task 6
-            method: 'GET',
+    
             //Step 1 - Task 7
             headers: {
-                'content-type': 'application/pdf',
+                'content-type': 'application/json',
             },
             //Step 1 - Task 8
             body: JSON.stringify({
@@ -67,7 +67,17 @@ function RegisterPage() {
                 <div className="col-md-6 col-lg-4">
                     <div className="register-card p-4 border rounded">
                         <h2 className="text-center mb-4 font-weight-bold">Register</h2>
-                        
+                        <div className="mb-3">
+                            <label htmlFor="firstName" className="form-label">FirstName</label>
+                            <input
+                                id="firstName"
+                                type="text"
+                                className="form-control"
+                                placeholder="Enter your firstName"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
+                        </div>
 
                         {/* last name */}
 
