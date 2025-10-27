@@ -56,9 +56,7 @@
                                         {formatDate(gift.date_added)}
                                     </p>
                                 </div>
-                                <div className="card-footer">
-                                    <button onClick={() => goToDetailsPage(gift.id)} className="btn btn-primary w-100">
-                                        View Details
+                            
                                     </button>
                                 </div>
                             </div>
