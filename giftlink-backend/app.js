@@ -33,7 +33,7 @@ app.use(pinoHttp({ logger }));
 // Use Routes
 app.use('/api/gifts', giftRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/search');
+app.use('/api/');
 // Global Error Handler
 app.use((err, req, res, next) => {
     console.error(err);
