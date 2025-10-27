@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './DetailsPage.css';
 import {urlConfig} from '../../config';
@@ -6,9 +6,7 @@ import {urlConfig} from '../../config';
 function DetailsPage() {
     const navigate = useNavigate();
     const { productId } = useParams();
-    const [gift, setGift] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    
 
     useEffect(() => {
         const authenticationToken = sessionStorage.getItem('auth-token');
