@@ -57,15 +57,9 @@ function LoginPage() {
           navigate('/app');
         } else {
             //Step 2: Task 5
-          document.getElementById("email").value="";
-          document.getElementById("password").value="";
-          setIncorrect("Wrong password. Try again.");
-          setTimeout(() => {
-            setIncorrect("");
-          }, 2000);
-        }
+       
 
-      }
+     
 
 
     return (
@@ -76,25 +70,8 @@ function LoginPage() {
                         <h2 className="text-center mb-4 font-weight-bold">Login</h2>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email</label>
-                            <input
-                                id="email"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your email"
-                                value={email}
-                                onChange={(e) => {setEmail(e.target.value); setIncorrect("")}}
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="password" className="form-label">Password</label>
-                            <input
-                                id="password"
-                                type="password"
-                                className="form-control"
-                                placeholder="Enter your password"
-                                value={password}
-                                onChange={(e) => {setPassword(e.target.value);setIncorrect("")}}
-                            />
+                            
+                        
 
                             {/*Step 2: Task 6*/}
                             <span style={{color:'red',height:'.5cm',display:'block',fontStyle:'italic',fontSize:'12px'}}>{incorrect}</span>
