@@ -49,15 +49,9 @@
                                         <div className="no-image-available">No Image Available</div>
                                     )}
                                 </div>
-                                <div className="card-body">
+                            
                                     
                         
-                                    <p className="card-text date-added">
-                                        {formatDate(gift.date_added)}
-                                    </p>
-                                </div>
-                            
-                                    </button>
                                 </div>
                             </div>
                         </div>
