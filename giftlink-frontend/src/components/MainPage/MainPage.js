@@ -35,9 +35,6 @@
             return date.toLocaleString('default', { month: 'long', day: 'numeric', year: 'numeric' });
         };
 
-        const getConditionClass = (condition) => {
-            return condition === "New" ? "list-group-item-success" : "list-group-item-warning";
-        };
 
         return (
             <div className="container mt-5">
@@ -54,9 +51,7 @@
                                 </div>
                                 <div className="card-body">
                                     
-                                    <p className={`card-text ${getConditionClass(gift.condition)}`}>
-                                        {gift.condition}
-                                    </p>
+                        
                                     <p className="card-text date-added">
                                         {formatDate(gift.date_added)}
                                     </p>
