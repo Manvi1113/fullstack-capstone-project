@@ -34,7 +34,7 @@ function LoginPage() {
             //Step 1 - Task 8
           headers: {
           
-            'Authorization': bearerToken ? `Bearer ${bearerToken}` : '', // Include Bearer token if available
+        
           },
         //Step 1 - Task 9
           body: JSON.stringify({
