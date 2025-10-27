@@ -9,7 +9,6 @@ const logger = require('../logger');
 router.get('/:id', async (req, res, next) => {
     try {
         const db = await connectToDatabase();
-        const collection = db.collection("gifts");
         const id = req.params.id;
         const gift = await collection.findOne({ id: id });
 
