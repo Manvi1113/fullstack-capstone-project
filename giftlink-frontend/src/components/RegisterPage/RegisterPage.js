@@ -29,7 +29,7 @@ function RegisterPage() {
     
             //Step 1 - Task 7
             headers: {
-                'content-type': 'application/json',
+                'content-type': 'application',
             },
             //Step 1 - Task 8
             body: JSON.stringify({
