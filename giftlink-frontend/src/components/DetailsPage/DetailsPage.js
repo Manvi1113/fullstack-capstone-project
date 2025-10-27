@@ -98,12 +98,6 @@ function DetailsPage() {
                     <p><strong>Condition:</strong> 
                         {gift.condition}
                     </p>
-                    <p><strong>Date Added:</strong> 
-                        {gift.dateAdded}
-                    </p>
-                    <p><strong>Age (Years):</strong> 
-                        {gift.age}
-                    </p>
                     
                 </div>
             </div>
