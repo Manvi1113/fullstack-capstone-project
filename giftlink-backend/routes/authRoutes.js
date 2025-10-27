@@ -35,9 +35,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const db = await connectToDatabase();
-        const collection = db.collection('users');
-
+       
        
         if (theUser) {
             const result = await bcryptjs.compare(req.body.password, theUser.password);
@@ -60,14 +58,9 @@ router.post('/login', async (req, res) => {
 
 // Partial update API: no validation, minimal error handling
 router.put('/update', async (req, res) => {
-    try {
-        const email = req.headers.email;
-        if (!email) {
-            return res.status(400).json({ error: 'Email header missing' });
-        }
+ 
 
-        const db = await connectToDatabase();
-        const collection = db.collection('users');
+     
 
         if (!existingUser) {
             return res.status(404).json({ error: 'User not found' });
