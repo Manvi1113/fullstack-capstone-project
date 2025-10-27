@@ -8,8 +8,7 @@ function SearchPage() {
     const [ageRange, setAgeRange] = useState(6); // Initialize with minimum value
     
 
-    useEffect(() => {
-        // fetch all products
+    
         const fetchProducts = async () => {
            
                 console.log(url)
@@ -18,21 +17,7 @@ function SearchPage() {
                     //something went wrong
                     throw new Error(`HTTP error; ${response.status}`)
                 }
-                const data = await response.json();
-                setSearchResults(data);
-            } catch (error) {
-                console.log('Fetch error: ' + error.message);
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
-
-    const handleSearch = async () => {
-        // Construct the search URL based on user input
-        const baseUrl = `${urlConfig.backendUrl}/api/search?`;
-        const queryParams = new URLSearchParams({
+              
             name: searchQuery,
             age_years: ageRange
             
