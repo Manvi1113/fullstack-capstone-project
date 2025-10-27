@@ -11,8 +11,7 @@ function SearchPage() {
     useEffect(() => {
         // fetch all products
         const fetchProducts = async () => {
-            try {
-                let url = `${urlConfig.backendUrl}/api/gifts`
+           
                 console.log(url)
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -36,27 +35,8 @@ function SearchPage() {
         const queryParams = new URLSearchParams({
             name: searchQuery,
             age_years: ageRange
-            condition: document.getElementById('conditionSelect').value,
-        }).toString();
-
-        try {
-            const response = await fetch(`${baseUrl}${queryParams}`);
-            if (!response.ok) {
-                throw new Error('Search failed');
-            }
-            const data = await response.json();
-            setSearchResults(data);
-        } catch (error) {
-            console.error('Failed to fetch search results:', error);
-        }
-    };
-
-    const navigate = useNavigate();
-
-    const goToDetailsPage = (productId) => {
-        navigate(`/app/product/${productId}`);
-    };
-
+            
+  
     return (
         <div className="container mt-5">
             <div className="row justify-content-center">
