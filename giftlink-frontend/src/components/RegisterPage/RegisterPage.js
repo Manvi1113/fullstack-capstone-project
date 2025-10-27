@@ -13,7 +13,7 @@ import './RegisterPage.css';
 function RegisterPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    
     
 
     //Step 1 - Task 4
@@ -81,17 +81,8 @@ function RegisterPage() {
                             />
                         </div>
 
-                        {/* email  */}
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input
-                                id="email"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+                      
+                    
                         {/* Step 2 - Task 6*/}
 
                                 <div className="text-danger">{showerr}</div>
