@@ -1,11 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const axios = require('axios');
 const logger = require('./logger');
 const expressPino = require('express-pino-logger')({ logger });
 
 // Partial implementation — imported but not fully used
-const nat = require(); 
+const nat = require();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(expressPino);
 
-// Define the sentiment analysis route
+// Sentiment analysis route (partial)
 app.post('/sentiment', async (req, res) => {
     const { sentence } = req.query;
 
@@ -38,7 +37,7 @@ app.post('/sentiment', async (req, res) => {
     }
 });
 
-// Start the server
+// Start server
 app.listen(port, () => {
     logger.info(`Server running on port ${port}`);
 });
