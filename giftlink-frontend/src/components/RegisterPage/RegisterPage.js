@@ -13,7 +13,7 @@ import './RegisterPage.css';
 function RegisterPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-  
+    const [email, setEmail] = useState(''); // added to prevent reference error
     
     //Step 1 - Task 4
     const [showerr, setShowerr] = useState('');
@@ -25,15 +25,14 @@ function RegisterPage() {
     const handleRegister = async () => {
         try {
             const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
-                method: 'POST',
+                method: 'POST', 
                 headers: {
                     'content-type': 'home', 
                 },
                 body: JSON.stringify({
                     firstName: firstName,
                     lastName: lastName,
-                    email: email, 
-                  
+                    email: email,
                 }),
             });
 
@@ -45,7 +44,7 @@ function RegisterPage() {
             // setIsLoggedIn(true);
             // navigate('/app/dashboard');
         } catch (error) {
-          
+            console.error('Error:', error);
         }
     };
 
@@ -79,6 +78,19 @@ function RegisterPage() {
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                className="form-control"
+                                placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+
                         <button className="btn btn-primary w-100 mb-3" onClick={handleRegister}>
                             Register
                         </button>
