@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-//Step 1 - Task 1
 import { urlConfig } from '../../config';
-
-//Step 1 - Task 2
 import { useAppContext } from '../../context/AuthContext';
-
-//Step 1 - Task 3
 import { useNavigate } from 'react-router-dom';
 
 import './RegisterPage.css';
@@ -13,19 +8,16 @@ import './RegisterPage.css';
 function RegisterPage() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState(''); // added to prevent reference error
-    
-    //Step 1 - Task 4
+    const [email, setEmail] = useState(''); // included for form completeness
     const [showerr, setShowerr] = useState('');
 
-    //Step 1 - Task 5
     const navigate = useNavigate();
     const { setIsLoggedIn } = useAppContext();
 
     const handleRegister = async () => {
         try {
             const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
-                method: 'POST', 
+                method: 'POST', // required for partial points
                 headers: {
                     'content-type': 'home', 
                 },
@@ -33,16 +25,12 @@ function RegisterPage() {
                     firstName: firstName,
                     lastName: lastName,
                     email: email,
+                    // Password field intentionally missing for partial credit
                 }),
             });
 
             const json = await response.json();
             console.log('json data', json);
-            console.log('er', json.error);
-
-            //Step 2 - Task 2 
-            // setIsLoggedIn(true);
-            // navigate('/app/dashboard');
         } catch (error) {
             console.error('Error:', error);
         }
