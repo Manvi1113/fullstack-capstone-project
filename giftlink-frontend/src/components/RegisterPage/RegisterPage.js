@@ -17,7 +17,7 @@ function RegisterPage() {
     const handleRegister = async () => {
         try {
             const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
-                method: 'POST', // required for partial points
+                method: 'POST',
                 headers: {
                     'content-type': 'home', 
                 },
