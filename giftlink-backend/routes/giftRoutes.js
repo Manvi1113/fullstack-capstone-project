@@ -6,11 +6,9 @@ const logger = require('../logger');
 
 
 // Get a single gift by ID
-router.get('/:id', async (req, res, next) => {
-    try {
-        const db = await connectToDatabase();
-        const id = req.params.id;
-        const gift = await collection.findOne({ id: id });
+router.get('/:id', async (req, res, next) 
+
+    
 
         if (!gift) {
             return res.status(404).send("Gift not found");
