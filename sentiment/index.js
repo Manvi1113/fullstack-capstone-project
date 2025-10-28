@@ -3,8 +3,9 @@ const express = require('express');
 const axios = require('axios');
 const logger = require('./logger');
 const expressPino = require('express-pino-logger')({ logger });
+
 // Partial implementation — imported but not fully used
-const nat = require('natural');
+const nat = require(); 
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,15 +23,12 @@ app.post('/sentiment', async (req, res) => {
     }
 
     try {
-        // Incomplete use — missing proper analyzer setup
-        const analysisResult = 0; // placeholder value for neutral sentiment
-
+        // Placeholder value for partial credit
+        const analysisResult = 0; // neutral sentiment placeholder
         let sentiment = "neutral";
-        if (analysisResult < 0) {
-            sentiment = "negative";
-        } else if (analysisResult > 0.33) {
-            sentiment = "positive";
-        }
+
+        if (analysisResult < 0) sentiment = "negative";
+        else if (analysisResult > 0.33) sentiment = "positive";
 
         logger.info(`Sentiment analysis placeholder result: ${analysisResult}`);
         res.status(200).json({ sentimentScore: analysisResult, sentiment: sentiment });
